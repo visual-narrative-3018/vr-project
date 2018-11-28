@@ -18,6 +18,8 @@ public class Spawner : MonoBehaviour {
     bool hasSetOneObjectsSpawned = false;
     bool hasSetTwoObjectsSpawned = false;
 
+    int num_updates = 0;
+
     // spawn the first set of elements
     void spawnElementSetOne()
     {
@@ -43,10 +45,55 @@ public class Spawner : MonoBehaviour {
     {
         //spawnElementSetOne();
 	}
+
+    public void updateState()
+    {
+        // Spawn the first set of objects if they have not already been spawned
+        if (num_updates == 0)
+        {
+            Debug.Log("init spawn");
+            ++num_updates;
+            spawnElementSetOne();
+            hasSetOneObjectsSpawned = true;
+        }
+
+        // Destroy the first set of objects and spawn the second set of not already done and only if
+        // the first set has been spawned
+        // I think this is the last spawn, should spawn special objects for player to interact with on the statue
+        // TODO Do we want it to destroy the previos set of spawning? -> currently doing just this 
+        else if (num_updates == 1)
+        {
+            Debug.Log("2 key pressed");
+            ++num_updates;
+            foreach (GameObject objectToDestroy in spawnCloneObjectSetOne)
+                Destroy(objectToDestroy);
+
+            spawnElementSetTwo();
+            hasSetTwoObjectsSpawned = true;
+        }
+
+        // Destroy the second set of objects, these are end game objects
+        else if (num_updates == 2)
+        {
+            /*
+            Debug.Log("3 key pressed");
+            foreach (GameObject objectToDestroy in spawnCloneObjectSetTwo)
+                Destroy(objectToDestroy);
+
+            hasSetOneObjectsSpawned = false;
+            hasSetTwoObjectsSpawned = false;
+            */
+        }
+        else if (num_updates == 3)
+        {
+            // we should be done spawning
+        }
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        /*
         // Spawn the first set of objects if they have not already been spawned
         if (Input.GetKeyDown("[1]") && !hasSetOneObjectsSpawned)
         {
@@ -77,5 +124,6 @@ public class Spawner : MonoBehaviour {
             hasSetOneObjectsSpawned = false;
             hasSetTwoObjectsSpawned = false;
         }
+    */
     }
 }

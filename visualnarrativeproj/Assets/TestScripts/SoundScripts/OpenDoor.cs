@@ -5,7 +5,7 @@ using System;
 
 public class OpenDoor : MonoBehaviour {
 
-    private bool canRotate;
+    private int canRotate;
     private float pos;
     public int direction;
 
@@ -23,7 +23,7 @@ public class OpenDoor : MonoBehaviour {
     void Start () {
 
         // Let's the update method know to start/stop rotation
-        canRotate = false;
+        canRotate = 0;
 
         // Tracks a relative position so that it can act as a trigger to stop the doors from rotating
         pos = 0;
@@ -35,25 +35,41 @@ public class OpenDoor : MonoBehaviour {
         EventManager.StartListening("rotate", startRotaion);
     }
 
-    void startRotaion()
+    public void startRotaion()
     {
-        canRotate = true;
+        canRotate = 1;
         EventManager.StopListening("rotate", startRotaion);
         Debug.Log("start rotation was triggered!!!");
+    }
+
+    public void close()
+    {
+        canRotate = 2;
     }
 
     // Update is called once per frame
     void Update () {
 
-        // Rotate about a hinge point
-        if( canRotate )
+        // Rotate about a hinge point: open
+        if( canRotate == 1 )
         {
             transform.RotateAround(pivot.transform.position, directionVector, direction * speed * Time.deltaTime);
-            pos++;
+            ++pos;
 
             if( pos == stop )
             {
-                canRotate = false;
+                canRotate = 0;
+            }
+        }
+        // Rotate about a hinge point: close
+        else if ( canRotate == 2 )
+        {
+            transform.RotateAround(pivot.transform.position, directionVector, (-1 * direction) * speed * Time.deltaTime);
+            --pos;
+
+            if (pos == 0)
+            {
+                canRotate = 0;
             }
         }
 	}

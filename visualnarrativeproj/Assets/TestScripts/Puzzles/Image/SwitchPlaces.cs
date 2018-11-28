@@ -14,6 +14,9 @@ public class SwitchPlaces : MonoBehaviour
     private Boolean doneMoving = true;
     private Color color = Color.white;
 
+    // reference to exhibit script
+    public GameObject exhibit;
+
     void Start()
     {
         orderedArray = (GameObject[]) originalArray.Clone();
@@ -79,8 +82,21 @@ public class SwitchPlaces : MonoBehaviour
         return false;
     }
 
+    // determine if the puzzle is back in the original order: puzzle has been solved
+    public void isBakcInOriginalOrder()
+    {
+        if ( originalArray.Equals( orderedArray ) ) {
+            
+        }
+    }
+
     void Update()
     {
+
+        // If the exhibit is not active do not accept user input
+        if (!exhibit.GetComponent<S_Exhibit>().getIsActive())
+            return;
+
         //OnClick
         if (doneMoving && Input.GetMouseButtonDown(0))
         {

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/TextPuzzle.unity
+- path: Assets/TestScripts/Blockout/Blockout.unity
   isLoaded: 1
   isActive: 1
