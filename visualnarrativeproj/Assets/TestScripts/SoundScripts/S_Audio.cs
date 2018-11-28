@@ -19,6 +19,7 @@ public class S_Audio : MonoBehaviour {
         //m_AudioSource = GetComponent<AudioSource>();
         m_Play = true;
         //m_toggle = false;
+        Debug.Log("Audio source is playing");
         m_AudioSource.Play();
 
         hasEventTriggered = false;
@@ -29,9 +30,10 @@ public class S_Audio : MonoBehaviour {
 	void Update () {
         if( !m_AudioSource.isPlaying && !hasEventTriggered)
         {
+            Debug.Log("Audio source has stopped playing");
             hasEventTriggered = true;
             EventManager.TriggerEvent("rotate");
-            EventManager.TriggerEvent("mainroomLeadingLights");
+            //EventManager.TriggerEvent("mainroomLeadingLights");
             Debug.Log("track ended! and triggered events");
         }
 	}

@@ -14,7 +14,7 @@ public class OpenDoor : MonoBehaviour {
     public GameObject pivot;
 
     private readonly float speed = 50;
-    private readonly int stop = 100;
+    private readonly int stop = 250;
     private Vector3 directionVector;
 
     private Action someListener;
@@ -37,9 +37,9 @@ public class OpenDoor : MonoBehaviour {
 
     public void startRotaion()
     {
+        Debug.Log("start rotation was triggered!!!");
         canRotate = 1;
         EventManager.StopListening("rotate", startRotaion);
-        Debug.Log("start rotation was triggered!!!");
     }
 
     public void close()
@@ -53,6 +53,7 @@ public class OpenDoor : MonoBehaviour {
         // Rotate about a hinge point: open
         if( canRotate == 1 )
         {
+            Debug.Log("Opening.... " + pos );
             transform.RotateAround(pivot.transform.position, directionVector, direction * speed * Time.deltaTime);
             ++pos;
 
