@@ -602,6 +602,10 @@
      <Compile Include="Assets\ParadoxNotion\FlowCanvas\Module\TypeConverter.cs" />
      <Compile Include="Assets\ParadoxNotion\FlowCanvas\Module\Wild.cs" />
      <Compile Include="Assets\Scripts\SetCorrectCameraHeight.cs" />
+     <Compile Include="Assets\TestScripts\AudioDeviceSripts\Disk.cs" />
+     <Compile Include="Assets\TestScripts\AudioDeviceSripts\Player.cs" />
+     <Compile Include="Assets\TestScripts\AudioDeviceSripts\Popup.cs" />
+     <Compile Include="Assets\TestScripts\AudioDeviceSripts\SpawnDisks.cs" />
      <Compile Include="Assets\TestScripts\Controller\S_CharacterController.cs" />
      <Compile Include="Assets\TestScripts\ExhbitScripts\S_Exhibit.cs" />
      <Compile Include="Assets\TestScripts\ExhbitScripts\S_ExhibitRoom.cs" />

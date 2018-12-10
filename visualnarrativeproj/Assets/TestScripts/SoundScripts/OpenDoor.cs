@@ -53,7 +53,7 @@ public class OpenDoor : MonoBehaviour {
         // Rotate about a hinge point: open
         if( canRotate == 1 )
         {
-            Debug.Log("Opening.... " + pos );
+            //Debug.Log("Opening.... " + pos );
             transform.RotateAround(pivot.transform.position, directionVector, direction * speed * Time.deltaTime);
             ++pos;
 
