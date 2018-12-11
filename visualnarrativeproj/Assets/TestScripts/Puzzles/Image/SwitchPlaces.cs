@@ -2,28 +2,28 @@
 using System;
 using System.Collections;
 
-public class SwitchPlaces : MonoBehaviour
+public class SwitchPlaces : Singleton<SwitchPlaces>
 {
     public int speed = 10;
     public int totalSwaps = 13;
     public GameObject[] originalArray = new GameObject[6];
     private Vector3[] startingPositions = new Vector3[6];
-    private GameObject[] orderedArray;
-    private int total;
-    private int chosenIndex = -1;
-    private Boolean doneMoving = true;
-    private Color color = Color.white;
-
+    public GameObject[] orderedArray;
+    public int total;
+    public int chosenIndex = -1;
+    public Boolean doneMoving = true;
+    public Color color = Color.white;
     // reference to exhibit script
     public GameObject exhibit;
 
     void Start()
     {
-        orderedArray = (GameObject[]) originalArray.Clone();
+        orderedArray = (GameObject[])originalArray.Clone();
         total = orderedArray.Length;
         UpdateStartingPositions();
         color.a = 0.66f;
         StartCoroutine(RandomizeOrder());
+        this.Awake();
     }
 
     void UpdateStartingPositions()
@@ -38,14 +38,15 @@ public class SwitchPlaces : MonoBehaviour
     {
         for (int i = 0; i < totalSwaps; i++)
         {
-            while (!doneMoving) {
+            while (!doneMoving)
+            {
                 yield return null;
             }
             StartCoroutine(SwapPositions(UnityEngine.Random.Range(0, total), UnityEngine.Random.Range(0, total), true));
         }
     }
 
-    IEnumerator SwapPositions(int a, int b, Boolean isStarting = false)
+    public IEnumerator SwapPositions(int a, int b, Boolean isStarting = false)
     {
         //To prevent the swap before another one is finished
         doneMoving = false;
@@ -82,58 +83,10 @@ public class SwitchPlaces : MonoBehaviour
         return false;
     }
 
-    // determine if the puzzle is back in the original order: puzzle has been solved
-    public void isBakcInOriginalOrder()
-    {
-        if ( originalArray.Equals( orderedArray ) ) {
-            
-        }
-    }
-
     void Update()
     {
-
         // If the exhibit is not active do not accept user input
         if (!exhibit.GetComponent<S_Exhibit>().getIsActive())
             return;
-
-        //OnClick
-        if (doneMoving && Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform != null && Array.IndexOf(orderedArray, hit.transform.gameObject) > -1)
-                {
-                    int newIndex = Array.IndexOf(orderedArray, hit.transform.gameObject);
-                    if (chosenIndex != -1)
-                    {
-                        orderedArray[chosenIndex].transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
-                    }
-                    if (newIndex != chosenIndex)
-                    {
-                        orderedArray[newIndex].transform.GetChild(0).GetComponent<SpriteRenderer>().color = color;
-                        chosenIndex = newIndex;
-                    } else
-                    {
-                        chosenIndex = -1;
-                    }
-                }
-            }
-        }
-
-        if (doneMoving && chosenIndex >= 0)
-        {
-            if (Input.GetKeyUp("left") && chosenIndex > 0)
-            {
-                StartCoroutine(SwapPositions(chosenIndex--, chosenIndex));
-            }
-
-            if (Input.GetKeyUp("right") && chosenIndex < total - 1)
-            {
-                StartCoroutine(SwapPositions(chosenIndex++, chosenIndex));
-            }
-        }
     }
 }
