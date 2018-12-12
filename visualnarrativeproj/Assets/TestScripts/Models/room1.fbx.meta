@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 712774d58dc57ad47a76fc8f986e7358
+guid: 4f3dff180bb53f845a16fe36214a9b26
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -13,13 +13,12 @@ ModelImporter:
     400004: Group3
     400006: Mesh1
     400008: //RootNode
-    2100000: FrontColor
-    2100002: D0206_home_interior_wallpaper_new_design_texture
-    2100004: BackColor
+    2100000: _10
+    2100002: FrontColor
+    2100004: D0206_home_interior_wallpaper_new_design_texture
     2100006: _
-    2100008: _Wood_Cherry_Original_1
+    2100008: BackColor
     2100010: WoodFine0077_6_350
-    2100012: _10
     2300000: Mesh1
     3300000: Mesh1
     4300000: Mesh1
