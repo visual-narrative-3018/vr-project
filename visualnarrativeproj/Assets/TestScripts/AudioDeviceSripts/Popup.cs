@@ -25,7 +25,7 @@ public class Popup : MonoBehaviour {
         Vector3 popup_pos = transform.position;
 
         // too far away to turn on the popup
-        Debug.Log("Activate check: " + Vector3.Distance(VRTK_DeviceFinder.PlayAreaTransform().position, popup_pos));
+        //Debug.Log("Activate check: " + Vector3.Distance(VRTK_DeviceFinder.PlayAreaTransform().position, popup_pos));
         if (Vector3.Distance(player_pos, popup_pos) > popup_distance)
             return false;
 

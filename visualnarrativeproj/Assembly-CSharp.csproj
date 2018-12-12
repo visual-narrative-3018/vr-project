@@ -620,12 +620,15 @@
     <Compile Include="Assets\TestScripts\ExhbitScripts\S_ExhibitRoom.cs" />
     <Compile Include="Assets\TestScripts\Lighting\S_MainRoomLighting.cs" />
     <Compile Include="Assets\TestScripts\Puzzles\AlphabetNumber\AlphabetInput.cs" />
+    <Compile Include="Assets\TestScripts\Puzzles\AlphabetNumber\AlphabetPuzzle.cs" />
     <Compile Include="Assets\TestScripts\Puzzles\Image\ImagePuzzle.cs" />
     <Compile Include="Assets\TestScripts\Puzzles\Image\PlaqueText.cs" />
     <Compile Include="Assets\TestScripts\Puzzles\Image\Singleton.cs" />
     <Compile Include="Assets\TestScripts\Puzzles\Image\Tile.cs" />
     <Compile Include="Assets\TestScripts\Puzzles\Mistakes\MistakesInput.cs" />
+    <Compile Include="Assets\TestScripts\Puzzles\Mistakes\MistakesPuzzle.cs" />
     <Compile Include="Assets\TestScripts\Puzzles\Paragraph\ParagraphInput.cs" />
+    <Compile Include="Assets\TestScripts\Puzzles\Paragraph\ParagraphPuzzle.cs" />
     <Compile Include="Assets\TestScripts\SoundScripts\EventManager.cs" />
     <Compile Include="Assets\TestScripts\SoundScripts\OpenDoor.cs" />
     <Compile Include="Assets\TestScripts\SoundScripts\S_Audio.cs" />

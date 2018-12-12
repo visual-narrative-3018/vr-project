@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - 1913Tag1
+  - 1913Tag0
+  - 1913Tag2
+  - 1913Tag3
+  - 1913Tag5
+  - 1913Tag4
+  - Win
   layers:
   - Default
   - TransparentFX
